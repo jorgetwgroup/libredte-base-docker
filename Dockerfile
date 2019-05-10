@@ -18,4 +18,6 @@ RUN apt-get update \
 	&& docker-php-ext-install -j$(nproc) pgsql \
 	&& docker-php-ext-install -j$(nproc) pdo pdo_pgsql mcrypt curl soap zip \
 	&& pear install Mail Mail_mime Net_SMTP \
+	
+	&& rm -rf /var/lib/apt/lists/* \
 	&& a2enmod rewrite ssl php7 && service apache2 restart
